@@ -1,0 +1,60 @@
+/* css/styles.css */
+
+/* CSS tambahan untuk stepper */
+.step-1 .btn-back,
+.step-1 .btn-finish {
+    display: none;
+}
+
+.step-1 .btn-next {
+    display: block;
+}
+
+.step-2 .btn-back,
+.step-2 .btn-next {
+    display: block;
+}
+
+.step-2 .btn-finish {
+    display: none;
+}
+
+.step-3 .btn-back,
+.step-3 .btn-finish {
+    display: block;
+}
+
+.step-3 .btn-next {
+    display: none;
+}
+
+/* Pastikan tombol bisa diklik */
+.btn-back, .btn-next, .btn-finish {
+    pointer-events: auto; /* Pastikan tombol bisa diklik */
+    cursor: pointer; /* Tampilkan cursor pointer saat hover */
+}
+
+/* Tambahan gaya untuk stepper */
+.step-indicator .circle {
+    min-width: 28px;
+    min-height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E3F6F5;
+    color: #004D40;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.step-indicator .text {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.divider {
+    flex: 1;
+    height: 2px;
+    background-color: #E3F6F5;
+}

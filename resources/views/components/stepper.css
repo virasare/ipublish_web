@@ -1,0 +1,12 @@
+/* stepper.css */
+.step-1 .btn-back { display: none; }
+.step-1 .btn-next { display: block; }
+.step-1 .btn-finish { display: none; }
+
+.step-2 .btn-back { display: block; }
+.step-2 .btn-next { display: block; }
+.step-2 .btn-finish { display: none; }
+
+.step-3 .btn-back { display: block; }
+.step-3 .btn-next { display: none; }
+.step-3 .btn-finish { display: block; }
