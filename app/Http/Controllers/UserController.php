@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view ("users.user");
+        return view ("users.beranda");
     }
 
     public function create()

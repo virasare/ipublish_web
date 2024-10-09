@@ -26,21 +26,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        \Log::info('User not authenticated, redirecting to login.');
         $request->authenticate();
     
         $request->session()->regenerate();
+
+        $user = $request->user();
         
         // Logika pengalihan berdasarkan role
         if ($request->user()->roles == 1) {
-            return redirect("admin/beranda");
+            return redirect('admin/beranda');
         }
-        if ($request->user()->roles == 2) {
-            return redirect()->route('users.beranda');
-        }
-        if ($request->user()->roles == 3) {
+        if ($user->roles == 2 && $user->added_by_dosen)  {
             return redirect('/');
         }
         
+        return redirect('users/beranda');
+
     }
     
 
@@ -56,6 +58,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    
     }
 
 }

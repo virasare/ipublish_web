@@ -19,21 +19,20 @@ class Admin
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-
-        $userRoles = Auth::user()->roles;
-
-        if ($userRoles == 1) {
+        
+        // $userRoles = Auth::user()->roles;
+        $user = Auth::user();
+        
+        // Cek apakah pengguna adalah admin
+        if ($user->roles == 1) {
             return $next($request);
         }
-        // if ($userRoles == 2) {
-        //     return redirect()->route('users.beranda');
-        // }
-        if ($userRoles == 2) {
+        
+        // Cek apakah user ditambahkan oleh dosen
+        if ($user->roles == 2 && $user->added_by_dosen) {
             return redirect('/');
         }
-        
 
-        // Fallback jika role tidak dikenali
-        // return redirect()->route('login')->with('error', 'You do not have permission to access this page.');
+        return redirect()->route('users/beranda');
     }
 }

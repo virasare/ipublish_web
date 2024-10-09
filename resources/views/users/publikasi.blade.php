@@ -109,25 +109,6 @@
                                     <!-- End Col -->
 
                                     <div class="sm:col-span-3">
-                                        <label for="af-submit-application-penguji-1"
-                                            class="inline-block text-sm font-medium text-gray-500 mt-2.5">
-                                            Kelompok
-                                        </label>
-                                    </div>
-                                    <!-- End Col -->
-
-
-                                    <div class="sm:col-span-9">
-                                        <select id="af-submit-application-penguji-1"
-                                            class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                            <option disabled selected class="text-gray-500">Pilih</option>
-                                            <option value="1">Ganjil</option>
-                                            <option value="2">Genap</option>
-                                        </select>
-                                    </div>
-                                    <!-- End Col -->
-
-                                    <div class="sm:col-span-3">
                                         <label for="af-submit-application-full-name"
                                             class="inline-block text-sm font-medium text-gray-500 mt-2.5">
                                             Nama lengkap
@@ -728,7 +709,6 @@
             const email = document.getElementById('user-email').dataset.email;
 
             if (stepDataPubFromStorage) {
-                document.getElementById('af-submit-application-penguji-1').value = stepDataPubFromStorage.kelompok;
                 document.getElementById('af-submit-application-full-name').value = stepDataPubFromStorage.namaLengkap;
                 document.getElementById('af-submit-application-nim').value = stepDataPubFromStorage.nim;
                 document.getElementById('dosen-pembimbing').value = stepDataPubFromStorage.dosenPembimbing;
@@ -1079,7 +1059,6 @@
                     formData.append('nim_mhs', stepDataPubFromStorage.nim);
                     formData.append('nama_mhs', stepDataPubFromStorage.namaLengkap);
                     formData.append('email', stepDataPubFromStorage.email);
-                    formData.append('kelompok', stepDataPubFromStorage.kelompok);
                     formData.append('dosen_pa', stepDataPubFromStorage.dosenPembimbing);
                     formData.append('dosen_p1', stepDataPubFromStorage.penguji1);
                     formData.append('dosen_p2', stepDataPubFromStorage.penguji2);
@@ -1149,7 +1128,6 @@
 
             nextBtn.addEventListener('click', function () {
                 if (currentStepPub === 1) {
-                    const kelompok = document.getElementById('af-submit-application-penguji-1');
                     const namaLengkap = document.getElementById('af-submit-application-full-name');
                     const nim = document.getElementById('af-submit-application-nim');
                     const dosenPembimbing = document.getElementById('dosen-pembimbing');
@@ -1158,9 +1136,8 @@
 
                     stepDataPub = {};
 
-                    if (kelompok && namaLengkap && nim && dosenPembimbing && penguji1 && penguji2) {
+                    if (namaLengkap && nim && dosenPembimbing && penguji1 && penguji2) {
                         stepDataPub = {
-                            kelompok: kelompok.value,
                             namaLengkap: namaLengkap.value,
                             nim: nim.value,
                             dosenPembimbing: dosenPembimbing.value,

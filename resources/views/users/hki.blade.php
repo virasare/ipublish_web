@@ -214,7 +214,7 @@
                                     <div class="sm:col-span-3">
                                         <label for="penguji-1"
                                             class="inline-block text-sm font-medium text-gray-500 mt-2.5">
-                                            Penguji 1
+                                            Nama lengkap
                                         </label>
                                     </div>
 
@@ -235,30 +235,7 @@
                                 </div>
 
                                 <!-- Informasi Dosen Penguji 2 -->
-                                <div
-                                    class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
-                                    <div class="sm:col-span-3">
-                                        <label for="penguji-2"
-                                            class="inline-block text-sm font-medium text-gray-500 mt-2.5">
-                                            Penguji 2
-                                        </label>
-                                    </div>
 
-                                    <div class="sm:col-span-9">
-                                        <select id="penguji-2"
-                                            class="dosen-select py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                                            @if ($dosen->isEmpty())
-                                                <option disabled selected class="text-gray-500">Tidak ada data</option>
-                                            @else
-                                                <option disabled selected class="text-gray-500">Pilih</option>
-                                                @foreach ($dosen as $row)
-                                                    <option value="{{ $row->nama_dosen }}">{{ $row->nama_dosen }}
-                                                    </option>
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                    </div>
-                                </div>
                             </form>
 
                         </div>
@@ -499,7 +476,6 @@
                 document.getElementById('af-submit-application-nim').value = step1DataFromStorage.nim;
                 document.getElementById('dosen-pembimbing').value = step1DataFromStorage.dosenPembimbing;
                 document.getElementById('penguji-1').value = step1DataFromStorage.penguji1;
-                document.getElementById('penguji-2').value = step1DataFromStorage.penguji2;
             }
 
             function fetchUserData() {
@@ -767,7 +743,6 @@
                     formData.append('kelompok', step1DataFromStorage.kelompok);
                     formData.append('dosen_pa', step1DataFromStorage.dosenPembimbing);
                     formData.append('dosen_p1', step1DataFromStorage.penguji1);
-                    formData.append('dosen_p2', step1DataFromStorage.penguji2);
                     formData.append('manual_book', manualBook);
                     formData.append('fomulir_dokumen', formulirPendaftaran);
                     formData.append('sertifikat_hki', sertifikatHKI);
@@ -831,18 +806,16 @@
                     const nim = document.getElementById('af-submit-application-nim');
                     const dosenPembimbing = document.getElementById('dosen-pembimbing');
                     const penguji1 = document.getElementById('penguji-1');
-                    const penguji2 = document.getElementById('penguji-2');
 
                     step1Data = {};
 
-                    if (kelompok && namaLengkap && nim && dosenPembimbing && penguji1 && penguji2) {
+                    if (kelompok && namaLengkap && nim && dosenPembimbing && penguji1) {
                         step1Data = {
                             kelompok: kelompok.value,
                             namaLengkap: namaLengkap.value,
                             nim: nim.value,
                             dosenPembimbing: dosenPembimbing.value,
                             penguji1: penguji1.value,
-                            penguji2: penguji2.value,
                             email: email
                         };
 

@@ -73,23 +73,26 @@ class InformasiController extends Controller
     
     public function editDosen(Request $request)
     {
-        try {
-            // Validate incoming data
-            $validatedData = $request->validate([
-                'NIP' => 'required|string|max:255',
-                'NIDN' => 'required|string|max:255',
-                'nama_dosen' => 'required|string|max:30',
-                'no_telp' => 'required|string|max:30',
-            ]);
+    try {
+        // Validate incoming data
+        $validatedData = $request->validate([
+            'NIP' => 'nullable|string|max:255',
+            'NIDN' => 'nullable|string|max:255',
+            'nama_dosen' => 'nullable|string|max:30',
+            'no_telp' => 'nullable|string|max:30',
+            'email' => 'nullable|string|email',
+        ]);
 
-            $dosen = Dosen::where('NIP', $validatedData['NIP'])->firstOrFail();
+        $dosen = Dosen::where('NIP', $validatedData['NIP'])->firstOrFail();
 
-            $dosen->update([
-                'NIDN' => $validatedData['NIDN'],
-                'nama_dosen' => $validatedData['nama_dosen'],
-                'no_telp' => $validatedData['no_telp'],
-            ]);
-
+        $dosen->update(array_filter([
+            'NIP' => $validatedData['NIP']?? $dosen -> NIP,
+            'NIDN' => $validatedData['NIDN']?? $dosen->NIDN,
+            'nama_dosen' => $validatedData['nama_dosen']?? $dosen->nama_dosen,
+            'no_telp' => $validatedData['no_telp']?? $dosen->no_telp,
+            'email' => $validatedData['email']?? $dosen->email,
+        ]));
+            
             return response()->json(['success' => true, 'message' => 'Data berhasil diperbarui!']);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());

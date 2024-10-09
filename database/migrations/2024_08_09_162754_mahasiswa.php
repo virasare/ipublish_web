@@ -17,7 +17,7 @@ class Mahasiswa extends Migration
             $table->string('nim_mhs', 255)->primary();
             $table->string('nama_mhs', 255);
             $table->string('email');
-            $table->string('kelompok', 30);
+            $table->string('kelompok', 30)->nullable();
             $table->string('dosen_pa', 255)->nullable();
             $table->string('dosen_p1', 255)->nullable();
             $table->string('dosen_p2', 255)->nullable();

@@ -19,22 +19,20 @@ class User
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-
-        $userRoles = Auth::user()->roles;
-
-        // if ($userRoles == 2) {
-        //     return $next($request);
-        // }
-
+        
+        $user = Auth::user();
+        $userRoles = $user->roles;
+        
+        // Jika pengguna adalah admin, arahkan ke halaman admin
         if ($userRoles == 1) {
-            return redirect()->route('admin.beranda');
+            return redirect()->route('admin/beranda');
         }
-
-        if ($userRoles == 2) {
-            return redirect('/');
+        
+        // Jika pengguna adalah "added by dosen", cegah mereka untuk masuk ke halaman admin
+        if ($user->roles == 2 && $user->added_by_dosen)  {
+            return redirect()->route('/');
         }
-
-        // Fallback jika role tidak dikenali
-        // return redirect()->route('login')->with('error', 'You do not have the required permissions.');
+        
+        return $next($request); // Biarkan pengguna non-admin mengakses halaman yang diinginkan
     }
 }

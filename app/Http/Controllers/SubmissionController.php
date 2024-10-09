@@ -69,7 +69,6 @@ class SubmissionController extends Controller
                 'kelompok' => 'required|string|max:30',
                 'dosen_pa' => 'nullable|string|max:255',
                 'dosen_p1' => 'nullable|string|max:255',
-                'dosen_p2' => 'nullable|string|max:255',
                 'manual_book' => 'nullable|file|mimes:pdf',
                 'fomulir_dokumen' => 'nullable|file|mimes:pdf',
                 'sertifikat_hki' => 'nullable|file|mimes:pdf',
@@ -84,7 +83,6 @@ class SubmissionController extends Controller
                     'kelompok' => $validatedData['kelompok'],
                     'dosen_pa' => $validatedData['dosen_pa'],
                     'dosen_p1' => $validatedData['dosen_p1'],
-                    'dosen_p2' => $validatedData['dosen_p2']
                 ]
             );
     
@@ -146,7 +144,6 @@ class SubmissionController extends Controller
                 'nim_mhs' => 'required|integer',
                 'nama_mhs' => 'required|string|max:255',
                 'email' => 'required|email',
-                'kelompok' => 'required|string|max:30',
                 'dosen_pa' => 'nullable|string|max:255',
                 'dosen_p1' => 'nullable|string|max:255',
                 'dosen_p2' => 'nullable|string|max:255',
@@ -182,7 +179,6 @@ class SubmissionController extends Controller
                 [
                     'nama_mhs' => $validatedData['nama_mhs'],
                     'email' => $validatedData['email'],
-                    'kelompok' => $validatedData['kelompok'],
                     'dosen_pa' => $validatedData['dosen_pa'],
                     'dosen_p1' => $validatedData['dosen_p1'],
                     'dosen_p2' => $validatedData['dosen_p2']

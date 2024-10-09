@@ -20,10 +20,10 @@
                     class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-4 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200">
                     <div class="sm:col-span-12">
                         <h2 class="text-lg font-semibold text-gray-800">
-                            Mahasiswa
+                            Dosen
                         </h2>
                         <p class="text-sm text-gray-600">
-                            Tambah,kelola dan unggah pengumuman
+                            Tambah dan kelola Dosen
                         </p>
                     </div>
                 </div>
@@ -37,10 +37,8 @@
                             <div>
                                 <label for="hs-leading-icon" class="block text-sm font-medium mb-2">NIP</label>
                                 <div class="relative">
-                                    <div class="mt-4 flex items-center justify-start px-4 text-xs font-medium bg-gray-100 text-gray-800 rounded-none text-left w-full">
-                                        <div class="my-3 text-sm font-medium-light text-gray-400 flex items-center">
-                                            {{ $dosen->NIP }}
-                                        </div>
+                                    <div class="relative">
+                                        <input type="text" id="nip" name="nip" class="py-3 mt-4 block w-full text-gray-700  bg-gray-100 border-gray-100 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Masukkan NIP..." value="{{ $dosen->NIP }}"> 
                                     </div>
                                 </div>
                             </div>
@@ -66,6 +64,14 @@
                                 <label for="hs-leading-icon" class="block text-sm font-medium mb-2">No. Telp</label>
                                 <div class="relative">
                                     <input type="text" id="telp" name="telp" class="py-3 mt-4 block w-full text-gray-700  bg-gray-100 border-gray-100 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Masukkan no.tlp..." value="{{ $dosen->no_telp }}"> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <label for="hs-leading-icon" class="block text-sm font-medium mb-2">Email</label>
+                                <div class="relative">
+                                    <input type="text" id="email" name="email" class="py-3 mt-4 block w-full text-gray-700  bg-gray-100 border-gray-100 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Masukkan email..." value="{{ $dosen->email }}"> 
                                 </div>
                             </div>
                         </div>
@@ -151,19 +157,22 @@
                 }
             }
             function handleFinish() {
-                const nidn = document.getElementById('nidn').value;
-                const namaDosen = document.getElementById('nama').value;
-                const telp = document.getElementById('telp').value;
+                const nip = document.getElementById('nip').value || null;
+                const nidn = document.getElementById('nidn').value || null;
+                const namaDosen = document.getElementById('nama').value || null;
+                const telp = document.getElementById('telp').value || null;
+                const email = document.getElementById('email').value || null;
             
-                const nip = '{{ $dosen->NIP }}'; // Assuming this variable is available in the Blade view
+                // const nip = '{{ $dosen->NIP }}'; // Assuming this variable is available in the Blade view
 
                 const formData = new FormData();
-                formData.append('NIP', nip);
-                formData.append('NIDN', nidn);
-                formData.append('nama_dosen', namaDosen);
-                formData.append('no_telp', telp);
+                if (nip)formData.append('NIP', nip);
+                if (nidn)formData.append('NIDN', nidn);
+                if (namaDosen)formData.append('nama_dosen', namaDosen);
+                if (telp)formData.append('no_telp', telp);
+                if (email)formData.append('email', email);
 
-                fetch('{{ route('edit.dosen') }}', {
+                fetch('{{ route('edit.dosen')}}', {
                     method: 'POST',
                     body: formData,
                     headers: {

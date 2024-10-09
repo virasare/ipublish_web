@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Dosen extends Model
 {
@@ -53,4 +54,13 @@ class Dosen extends Model
         'no_telp',
         'email',
     ];
+
+    public function scopeFilter(Builder $query, array $filters): void
+    {
+        $query->when($filters['search']??false, fn($query, $search)=>
+            $query->where('nama_dosen', 'like', '%'.$search.'%')
+            ->orWhere('NIP', 'like', '%' . $search . '%')
+            ->orWhere('NIDN', 'like', '%' . $search . '%')
+        );
+    }
 }

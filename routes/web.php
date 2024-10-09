@@ -8,7 +8,10 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\SubmissionController;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\Beranda;
+use App\Models\Dosen;
+
 
 
 // Route untuk halaman utama
@@ -19,7 +22,7 @@ Route::get('/', function () {
 
 // Rute untuk Admin
 Route::get('/admin/beranda', function () {
-    return view('admin/beranda');
+    return view('admin.beranda');
 })->middleware(['auth', 'verified', 'admin'])->name('admin.beranda');
 
 Route::middleware('auth', 'admin')->group(function (){
@@ -59,6 +62,11 @@ Route::middleware('auth', 'admin')->group(function (){
         Route::post('/edit-dosen', [InformasiController::class, 'editDosen'])->name('edit.dosen');
 });
 
+//Route searching admin
+Route::get('/admin/dosen', function() {
+    return view('/admin/dosen', ['nama_dosen' => 'add-dosen-form', 'dosen' => Dosen::filter(request(['search']))->latest()->get()]);
+})->name('admin.dosen');
+
 
 // Route user
 Route::get('/users/beranda', function () {
@@ -82,6 +90,9 @@ Route::get('/beranda/{brd:slug}', function (Beranda $brd) {
     Route::post('/submit-form', [SubmissionController::class, 'submitForm'])->name('submit.form');
     Route::post('/submit-form-pub', [SubmissionController::class, 'submitFormPub'])->name('submit.form.pub');
 
-
+   
 // Mengimpor route otentikasi
 require __DIR__.'/auth.php';
+
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);

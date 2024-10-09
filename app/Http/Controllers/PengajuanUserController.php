@@ -12,10 +12,10 @@ class PengajuanUserController extends Controller
     {
         $user = User::where(function ($query) {
             $query->where('roles', 1) // Include admin
-                  ->orWhere(function ($subQuery) {
-                      $subQuery->where('roles', 2)
+                ->orWhere(function ($subQuery) {
+                    $subQuery->where('roles', 2)
                                ->where('added_by_dosen', true); // Include added_by_dosen users with roles 2
-                  });
+                });
         })
         ->orderBy('created_at', 'desc') // Mengurutkan berdasarkan created_at secara descending
         ->paginate(10);
