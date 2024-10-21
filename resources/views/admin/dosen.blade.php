@@ -17,15 +17,15 @@
             <div class="flex justify-between items-center w-full mb-4">
                 <form class="flex-grow mr-2">
                 
-                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input type="search" id="search" name="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Dosen..." required autocomple="off"/>
-                        <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cari</button>
+                        <input type="search" id="search" name="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Cari Dosen..." required autocomple="off"/>
+                        <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Cari</button>
                     </div>
                 </form>
 
@@ -176,90 +176,85 @@
                         Tambah Dosen
                     </h3>
                     <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none" aria-label="Close" data-hs-overlay="#hs-scale-animation-modal">
-                    <span class="sr-only">Close</span>
-                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
+                        <span class="sr-only">Close</span>
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
                     </button>
                 </div>
                 <div class="p-4 overflow-y-auto">
-            <form id="add-dosen-form" class="mt-4">
-                <div class="w-full space-y-3">
-                    <div>
-                        <label for="nip" class="block text-sm font-medium mb-2">NIP</label>
-                        <div class="relative">
-                            <input type="text" id="nip" name="NIP" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan NIP...">
+                    <form id="add-dosen-form" class="mt-4">
+                        <div class="w-full space-y-3">
+                            <div>
+                                <label for="nip" class="block text-sm font-medium mb-2">NIP</label>
+                                <div class="relative">
+                                    <input type="text" id="nip" name="NIP" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan NIP...">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="nidn" class="block text-sm font-medium mb-2">NIDN</label>
+                                <div class="relative">
+                                    <input type="text" id="nidn" name="NIDN" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan NIDN...">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="nama-dosen" class="block text-sm font-medium mb-2">Nama Dosen</label>
+                                <div class="relative">
+                                    <input type="text" id="nama-dosen" name="nama_dosen" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan nama dosen...">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="no-telp" class="block text-sm font-medium mb-2">Nomor Telepon</label>
+                                <div class="relative">
+                                    <input type="text" id="no-telp" name="no_telp" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan nomor telepon...">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                                <div class="relative">
+                                    <input type="email" id="email" name="email" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan email...">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="password" class="block text-sm font-medium mb-2">Password</label>
+                                <div class="relative">
+                                    <input type="password" id="password" name="password" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan password...">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label for="nidn" class="block text-sm font-medium mb-2">NIDN</label>
-                        <div class="relative">
-                            <input type="text" id="nidn" name="NIDN" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan NIDN...">
+                        <div class="flex justify-between items-center py-3 px-4 border-t">
+                            <button type="button"
+                                class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-scale-animation-modal">
+                                Kembali
+                            </button>
+                            <button type="button" id="save-btn"
+                                class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                Simpan
+                            </button>
                         </div>
-                    </div>
-                    <div>
-                        <label for="nama-dosen" class="block text-sm font-medium mb-2">Nama Dosen</label>
-                        <div class="relative">
-                            <input type="text" id="nama-dosen" name="nama_dosen" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan nama dosen...">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="no-telp" class="block text-sm font-medium mb-2">Nomor Telepon</label>
-                        <div class="relative">
-                            <input type="text" id="no-telp" name="no_telp" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan nomor telepon...">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                        <div class="relative">
-                            <input type="email" id="email" name="email" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan email...">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="password" class="block text-sm font-medium mb-2">Password</label>
-                        <div class="relative">
-                            <input type="password" id="password" name="password" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm" placeholder="Masukkan password...">
-                        </div>
-                    </div>
-                </div>
-                <div class="flex justify-between items-center py-3 px-4 border-t">
-                    <button type="button"
-                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-scale-animation-modal">
-                        Kembali
-                    </button>
-                    <button type="button" id="save-btn"
-                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                        Simpan
-                    </button>
-                </div>
-            </form>
-                </div>
-        </div>
-    </div>
-
-    <div id="deleteConfirmationModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-        <div class="relative top-1/4 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            <div class="mt-3 text-center">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
-                    Konfirmasi Penghapusan
-                </h3>
-                <div class="mt-2 px-7 py-3">
-                    <p class="text-sm text-gray-500">
-                        Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.
-                    </p>
-                </div>
-                <div class="items-center px-4 py-3">
-                    <button id="confirmDeleteBtn" class="px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-700">
-                        Hapus
-                    </button>
-                    <button id="cancelDeleteBtn" class="px-4 py-2 bg-gray-300 text-gray-800 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 mt-2">
-                        Batal
-                    </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    
+    
+    <div id="deleteConfirmationModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-1/4 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Konfirmasi Penghapusan</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus data ini? Tindakan ini tidak dapat dibatalkan.</p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="confirmDeleteBtn" class="px-4 py-2 bg-red-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-700">Hapus</button>
+                    <button id="cancelDeleteBtn" class="px-4 py-2 bg-gray-300 text-gray-800 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 mt-2">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

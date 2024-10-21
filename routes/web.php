@@ -57,7 +57,7 @@ Route::middleware('auth', 'admin')->group(function (){
         Route::post('/tambah-mhs', [InformasiController::class, 'tambahMhs'])->name('tambah.mhs');
 
         Route::post('/tambah-dosen', [InformasiController::class, 'tambahDosen'])->name('tambah.dosen');
-        Route::get('/dosen/{nip}', [InformasiController::class, 'detailDosen'])->name('admin.dosen.detail');
+        Route::get('/dosen/{id}', [InformasiController::class, 'detailDosen'])->name('admin.dosen.detail');
         Route::delete('/dosen/{nip}', [InformasiController::class, 'destroyDosen'])->name('admin.dosen.delete');
         Route::post('/edit-dosen', [InformasiController::class, 'editDosen'])->name('edit.dosen');
 });

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-class Dosen extends Model
+class Dosen extends Model //terhubung dgn table dosen
 {
     /**
      * The table associated with the model.
