@@ -153,7 +153,7 @@
                                             {{ $mahasiswa->sertifikat_snatia }}
                                         </td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->sertifikat_snatia) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->sertifikat_snatia) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -181,7 +181,7 @@
                                             {{ $mahasiswa->turnitin_snatia }}
                                         </td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->turnitin_snatia) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->turnitin_snatia) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -197,7 +197,7 @@
                                             {{ $mahasiswa->loa_snatia }}
                                         </td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->loa_snatia) }}" target="_blank"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->loa_snatia) }}" target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
                                             </a>
@@ -234,7 +234,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->turnitin_pkl }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->turnitin_pkl) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->turnitin_pkl) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -248,7 +248,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->loa_pkl }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->loa_pkl) }}" target="_blank"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->loa_pkl) }}" target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
                                             </a>
@@ -285,7 +285,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->manual_book_hki_pkl }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->manual_book_hki_pkl) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->manual_book_hki_pkl) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -299,7 +299,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->form_pendaftaran_hki_pkl }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->form_pendaftaran_hki_pkl) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->form_pendaftaran_hki_pkl) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -313,7 +313,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->sertifikat_hki_pkl }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->sertifikat_hki_pkl) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->sertifikat_hki_pkl) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -350,7 +350,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->laporan_tugas_akhir }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->laporan_tugas_akhir) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->laporan_tugas_akhir) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -364,7 +364,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->berita_acara_ujian_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->berita_acara_ujian_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->berita_acara_ujian_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -378,7 +378,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->lembar_pengesahan_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->lembar_pengesahan_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->lembar_pengesahan_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -392,7 +392,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->file_program_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->file_program_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->file_program_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -427,7 +427,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->upload_draft_jurnal_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->upload_draft_jurnal_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->upload_draft_jurnal_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -441,7 +441,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->file_turnitin_draft_jurnal_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->file_turnitin_draft_jurnal_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->file_turnitin_draft_jurnal_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -456,7 +456,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->loa_publikasi_makalah_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->loa_publikasi_makalah_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->loa_publikasi_makalah_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -492,7 +492,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $mahasiswa->upload_file_manual_book_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->upload_file_manual_book_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->upload_file_manual_book_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
@@ -516,7 +516,7 @@
                                         <td class="w-2/5 px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
                                             {{ $mahasiswa->upload_file_pendaftaran_hki_ta }}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/' . $mahasiswa->upload_file_pendaftaran_hki_ta) }}"
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->upload_file_pendaftaran_hki_ta) }}"
                                                 target="_blank"
                                                 class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download

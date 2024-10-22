@@ -16,7 +16,7 @@ class DosenSeeder extends Seeder
     {
         DB::table('dosen')->insert([
             [
-                'NIP' => '123456',
+                'NIP' => '12345',
                 'NIDN' => '654321',
                 'nama_dosen' => 'Dr. John Doe',
                 'no_telp' => '1234567890',

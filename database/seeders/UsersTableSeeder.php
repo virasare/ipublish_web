@@ -28,14 +28,14 @@ class UsersTableSeeder extends Seeder
         ]);
 
         // Seed data ke tabel dosen
-        DB::table('dosen')->insert([
-            'NIP' => '12345678',
-            'NIDN' => '100200300',
-            'nama_dosen' => 'Admin Dosen',
-            'no_telp' => '08123456789',
-            'email' => 'admin@gmail.com',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // DB::table('dosen')->insert([
+        //     'NIP' => '12345678',
+        //     'NIDN' => '100200300',
+        //     'nama_dosen' => 'Admin Dosen',
+        //     'no_telp' => '08123456789',
+        //     'email' => 'admindosen@gmail.com',
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
     }
 }

@@ -559,8 +559,8 @@
                                             </span>
                                     </div>
 
-                                     <!-- ⁠Form Pendaftaran HKI TA -->
-                                     <div class="sm:col-span-3">
+                                    <!-- ⁠Form Pendaftaran HKI TA -->
+                                    <div class="sm:col-span-3">
                                         <label for="upload_file_pendaftaran_hki_ta" class="inline-block text-sm font-medium text-gray-500 mt-2.5">
                                             ⁠Form Pendaftaran HKI TA
                                         </label>
@@ -681,7 +681,7 @@
                                 class="text-blue-800 decoration-2 hover:underline font-medium text-sm focus:outline-none focus:underline">
                                 Konfirmasi
                             </button>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 </div>

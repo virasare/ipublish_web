@@ -14,6 +14,9 @@ use App\Models\PengajuanPublikasi;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Beranda;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 class SubmissionController extends Controller
 {
@@ -85,30 +88,37 @@ class SubmissionController extends Controller
                     'dosen_p1' => $validatedData['dosen_p1'],
                 ]
             );
-    
-            // Store files and update the PengajuanHki model
+
+            
+            $userName = $request->input('nama_mhs');
+            // Tentukan base path yang diinginkan
+            $folderBasePath = 'HKI/' . $userName; // Path dasar menjadi 'HKI/Vira-Sare'
+
+            // Tentukan path untuk setiap file
             $filePaths = [
                 'manualBook' => $request->file('manual_book') ? 
-                    $request->file('manual_book')->storeAs('', $request->file('manual_book')->getClientOriginalName(), 'public') : null,
+                Storage::disk('google')->putFileAs($folderBasePath . '/manual-book', $request->file('manual_book'), $request->file('manual_book')->getClientOriginalName()) : null,
+                
                 'fomulirDokumen' => $request->file('fomulir_dokumen') ? 
-                    $request->file('fomulir_dokumen')->storeAs('', $request->file('fomulir_dokumen')->getClientOriginalName(), 'public') : null,
+                Storage::disk('google')->putFileAs($folderBasePath . '/fomulir-dokumen', $request->file('fomulir_dokumen'), $request->file('fomulir_dokumen')->getClientOriginalName()) : null,
+                
                 'sertifikatHki' => $request->file('sertifikat_hki') ? 
-                    $request->file('sertifikat_hki')->storeAs('', $request->file('sertifikat_hki')->getClientOriginalName(), 'public') : null,
+                Storage::disk('google')->putFileAs($folderBasePath . '/sertifikat-hki', $request->file('sertifikat_hki'), $request->file('sertifikat_hki')->getClientOriginalName()) : null,
             ];
-    
-            // Update or create pengajuanHki data
+            
+            // Pengajuan HKI pertama
             $pengajuanHki = PengajuanHki::updateOrCreate(
                 ['nim_mhs' => $validatedData['nim_mhs']],
                 [
                     'submission_date' => now(),
                     'status' => 'diajukan',
-                    'manual_book' => $filePaths['manualBook'],
+                    'manual_book' => $filePaths['manualBook'],  // Menyimpan nama file yang diunggah ke Google Drive
                     'fomulir_dokumen' => $filePaths['fomulirDokumen'],
                     'sertifikat_hki' => $filePaths['sertifikatHki'],
                     'komentar' => null
                 ]
             );
-    
+            
             return response()->json(['success' => true, 'message' => 'Data berhasil disimpan!']);
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
@@ -184,30 +194,52 @@ class SubmissionController extends Controller
                     'dosen_p2' => $validatedData['dosen_p2']
                 ]
             );
-    
+
+            $userName = $request->input('nama_mhs');
+            $folderBasePath = 'Publikasi/'.$userName;
+
             $filePaths = [
-                'sertifikatSnatia' => $request->file('sertifikat_snatia') ? $request->file('sertifikat_snatia')->storeAs('', $request->file('sertifikat_snatia')->getClientOriginalName(), 'public') : null,
-                'turnitinSnatia' => $request->file('turnitin_snatia') ? $request->file('turnitin_snatia')->storeAs('', $request->file('turnitin_snatia')->getClientOriginalName(), 'public') : null,
-                'loaSnatia' => $request->file('loa_snatia') ? $request->file('loa_snatia')->storeAs('', $request->file('loa_snatia')->getClientOriginalName(), 'public') : null,
-                'turnitinPkl' => $request->file('turnitin_pkl') ? $request->file('turnitin_pkl')->storeAs('', $request->file('turnitin_pkl')->getClientOriginalName(), 'public') : null,
-                'loaPkl' => $request->file('loa_pkl') ? $request->file('loa_pkl')->storeAs('', $request->file('loa_pkl')->getClientOriginalName(), 'public') : null,
-                'manualBookHkiPkl' => $request->file('manual_book_hki_pkl') ? $request->file('manual_book_hki_pkl')->storeAs('', $request->file('manual_book_hki_pkl')->getClientOriginalName(), 'public') : null,
-                'sertifikatHkiPkl' => $request->file('sertifikat_hki_pkl') ? $request->file('sertifikat_hki_pkl')->storeAs('', $request->file('sertifikat_hki_pkl')->getClientOriginalName(), 'public') : null,
-                'formPendaftaranHKIPkl' => $request->file('form_pendaftaran_hki_pkl') ? $request->file('form_pendaftaran_hki_pkl')->storeAs('', $request->file('form_pendaftaran_hki_pkl')->getClientOriginalName(), 'public') : null,
-                'laporanTugasAkhir' => $request->file('laporan_tugas_akhir') ? $request->file('laporan_tugas_akhir')->storeAs('', $request->file('laporan_tugas_akhir')->getClientOriginalName(), 'public') : null,
-                'beritaAcaraUjianTA' => $request->file('berita_acara_ujian_ta') ? $request->file('berita_acara_ujian_ta')->storeAs('', $request->file('berita_acara_ujian_ta')->getClientOriginalName(), 'public') : null,
-                'lembarPengesahanTA' => $request->file('lembar_pengesahan_ta') ? $request->file('lembar_pengesahan_ta')->storeAs('', $request->file('lembar_pengesahan_ta')->getClientOriginalName(), 'public') : null,
-                'fileProgramTA' => $request->file('file_program_ta') ? $request->file('file_program_ta')->storeAs('', $request->file('file_program_ta')->getClientOriginalName(), 'public') : null,
-                'uploadDraftJurnalTA' => $request->file('upload_draft_jurnal_ta') ? $request->file('upload_draft_jurnal_ta')->storeAs('', $request->file('upload_draft_jurnal_ta')->getClientOriginalName(), 'public') : null,
-                'fileTurnitinDraftJurnalTA' => $request->file('file_turnitin_draft_jurnal_ta') ? $request->file('file_turnitin_draft_jurnal_ta')->storeAs('', $request->file('file_turnitin_draft_jurnal_ta')->getClientOriginalName(), 'public') : null,
-                'loaPublikasiMakalahTA' => $request->file('loa_publikasi_makalah_ta') ? $request->file('loa_publikasi_makalah_ta')->storeAs('', $request->file('loa_publikasi_makalah_ta')->getClientOriginalName(), 'public') : null,
-                'uploadFileManualBookTA' => $request->file('upload_file_manual_book_ta') ? $request->file('upload_file_manual_book_ta')->storeAs('', $request->file('upload_file_manual_book_ta')->getClientOriginalName(), 'public') : null,
-                'uploadFilePendaftaranHKITA' => $request->file('upload_file_pendaftaran_hki_ta') ? $request->file('upload_file_pendaftaran_hki_ta')->storeAs('', $request->file('upload_file_pendaftaran_hki_ta')->getClientOriginalName(), 'public') : null,
-            ];            
+                'sertifikatSnatia' => $request->file('sertifikat_snatia') ?
+                Storage::disk('google')->putFileAs($folderBasePath .'/berkas-snatia/sertifikat-snatia', $request->file('sertifikat_snatia'), $request->file('sertifikat_snatia')->getClientOriginalName()):null,
+                'turnitinSnatia' => $request->file('turnitin_snatia') ?
+                Storage::disk('google')->putFileAs($folderBasePath .'/berkas-snatia/turnitin-snatia', $request->file('turnitin_snatia'), $request->file('turnitin_snatia')->getClientOriginalName()):null,
+                'loaSnatia' => $request->file('loa_snatia') ?
+                Storage::disk('google')->putFileAs($folderBasePath .'/berkas-snatia/loa-snatia', $request->file('loa_snatia'), $request->file('loa_snatia')->getClientOriginalName()):null,
+
+                'turnitinPkl' => $request->file('turnitin_pkl') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-pkl/turnitin-pkl', $request->file('turnitin_pkl'), $request->file('turnitin_pkl')->getClientOriginalName()):null,
+                'loaPkl' => $request->file('loa_pkl') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-pkl/loa-pkl', $request->file('loa_pkl'), $request->file('loa_pkl')->getClientOriginalName()):null,
+                'manualBookHkiPkl' => $request->file('manual_book_hki_pkl') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-pkl/manual-book-hki-pkl', $request->file('manual_book_hki_pkl'), $request->file('manual_book_hki_pkl')->getClientOriginalName()):null,
+                'sertifikatHkiPkl' => $request->file('sertifikat_hki_pkl') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-pkl/sertifikat-hki-pkl', $request->file('sertifikat_hki_pkl'), $request->file('sertifikat_hki_pkl')->getClientOriginalName()):null,
+                'formPendaftaranHKIPkl' => $request->file('form_pendaftaran_hki_pkl') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-pkl/form-pendaftaran-hki-pkl', $request->file('form_pendaftaran_hki_pkl'), $request->file('form_pendaftaran_hki_pkl')->getClientOriginalName()):null,
+
+                'laporanTugasAkhir' => $request->file('laporan_tugas_akhir') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/laporan-tugas-akhir', $request->file('laporan_tugas_akhir'), $request->file('laporan_tugas_akhir')->getClientOriginalName()):null,
+                'beritaAcaraUjianTA' => $request->file('berita_acara_ujian_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/berita-acara-ujian-ta', $request->file('berita_acara_ujian_ta'), $request->file('berita_acara_ujian_ta')->getClientOriginalName()):null,
+                'lembarPengesahanTA' => $request->file('lembar_pengesahan_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/lembar-pengesahan-ta', $request->file('lembar_pengesahan_ta'), $request->file('lembar_pengesahan_ta')->getClientOriginalName()):null,
+                'fileProgramTA' => $request->file('file_program_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/file-program-ta', $request->file('file_program_ta'), $request->file('file_program_ta')->getClientOriginalName()):null,
+                'uploadDraftJurnalTA' => $request->file('upload_draft_jurnal_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/upload-draft-jurnal-ta', $request->file('upload_draft_jurnal_ta'), $request->file('upload_draft_jurnal_ta')->getClientOriginalName()):null,
+                'fileTurnitinDraftJurnalTA' => $request->file('file_turnitin_draft_jurnal_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/file-turnitin-draft-jurnal-ta', $request->file('file_turnitin_draft_jurnal_ta'), $request->file('file_turnitin_draft_jurnal_ta')->getClientOriginalName()):null,
+                'loaPublikasiMakalahTA' => $request->file('loa_publikasi_makalah_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/loa-publikasi-makalah-ta', $request->file('loa_publikasi_makalah_ta'), $request->file('loa_publikasi_makalah_ta')->getClientOriginalName()):null,
+                'uploadFileManualBookTA' => $request->file('upload_file_manual_book_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/manual-book-ta', $request->file('upload_file_manual_book_ta'), $request->file('upload_file_manual_book_ta')->getClientOriginalName()):null,
+                'uploadFilePendaftaranHKITA' => $request->file('upload_file_pendaftaran_hki_ta') ?
+                Storage::disk('google')->putFileAs($folderBasePath.'/berkas-ta/upload-file-pendaftaran-hki-ta', $request->file('upload_file_pendaftaran_hki_ta'), $request->file('upload_file_pendaftaran_hki_ta')->getClientOriginalName()):null,
+            ];
     
             $pengajuanPublikasi = PengajuanPublikasi::updateOrCreate(
                 ['nim_mhs' => $validatedData['nim_mhs']],
-                [   
+                [
                     'submission_date' => now(),
                     'status' => 'diajukan',
                     'tanggal_pengajuan' => $validatedData['tanggal_pengajuan'],

@@ -9,6 +9,9 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
+
 
 class ExportHki extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder implements FromCollection, WithHeadings, WithMapping
 {
@@ -49,12 +52,39 @@ class ExportHki extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder impleme
         }
     }
 
+    // protected function getFileLink($file, $text)
+    // {
+    //     if ($file) {
+    //         // Cek apakah file ada di Google Drive
+    //         if (Storage::disk('google')->exists($file)) {
+    //             // Mengambil URL file dari Google Drive
+    //             $url = Storage::disk('google')->url($file);
+
+    //             // Mendapatkan ID file dari URL
+    //             $fileId = basename($url); // Misalnya: jika URL adalah /file/d/1ABC23D456, kita ambil '1ABC23D456'
+                
+    //             // Membuat tautan tampilan Google Drive
+    //             return "https://drive.google.com/file/d/{$fileId}/view";
+    //         } else {
+    //             return ''; // Kembalikan string kosong jika file tidak ada
+    //         }
+    //     } else {
+    //         return ''; // Kembalikan string kosong jika file tidak ada
+    //     }
+    // }
+
+
+
     protected function getFileLink($file, $text)
     {
         if ($file) {
-            // Jika file ada di storage, gunakan storage path, misalnya:
-            // return '=HYPERLINK("' . url("storage/".$file) . '", "' . $text . '")';
-            return url("storage/" . $file);
+            // Cek apakah file ada di Google Drive
+            if (Storage::disk('google')->exists($file)) {
+                // Mengambil URL file dari Google Drive
+                return Storage::disk('google')->url($file);
+            } else {
+                return ''; 
+            }
         } else {
             return '';
         }

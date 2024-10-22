@@ -89,10 +89,12 @@ Route::get('/beranda/{brd:slug}', function (Beranda $brd) {
 
     Route::post('/submit-form', [SubmissionController::class, 'submitForm'])->name('submit.form');
     Route::post('/submit-form-pub', [SubmissionController::class, 'submitFormPub'])->name('submit.form.pub');
+    // Route::get('/submit-form', [SubmissionController::class, 'submitForm'])->name('submit.form');
 
-   
 // Mengimpor route otentikasi
 require __DIR__.'/auth.php';
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+Route::get('/upload',[SubmissionController::class, 'upload']);

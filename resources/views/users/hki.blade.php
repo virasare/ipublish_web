@@ -653,7 +653,7 @@
                     stepper.classList.remove('completed');
                 }
             }
-                      
+
             function updateButtonUI() {
                 const status = localStorage.getItem('status'); // Ambil status dari localStorage
             
@@ -774,15 +774,15 @@
                                     updateStepUI(stepContentItems.length);
                                     fetchUserData();
                                 } else {
-                                    showToast('Gagal menyimpan data.', 'error');
+                                    showToast('Gagal menyimpan data else.', 'error');
                                 }
                             } catch (e) {
-                                showToast('Gagal menyimpan data.', 'error');
+                                showToast('Gagal menyimpan data catch.', 'error');
                             }
                         })
                         .catch(error => {
                             console.error('Error:', error);
-                            showToast('Gagal menyimpan data.', 'error');
+                            showToast('Gagal menyimpan data catch error.', 'error');
                         });
                 }
             }

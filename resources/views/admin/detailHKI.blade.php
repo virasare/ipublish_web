@@ -125,7 +125,7 @@
                                         <td class="w-1/4 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Manual Book</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{$mahasiswa->manual_book}}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/'.$mahasiswa->manual_book) }}" target="_blank" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->manual_book) }}" target="_blank" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
                                             </a>
                                         </td>
@@ -134,7 +134,7 @@
                                         <td class="w-1/4 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Formulir Dokumen</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{$mahasiswa->fomulir_dokumen}}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/'.$mahasiswa->fomulir_dokumen) }}" target="_blank" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->fomulir_dokumen) }}" target="_blank" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
                                             </a>
                                         </td>
@@ -143,7 +143,7 @@
                                         <td class="w-1/4 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Sertifikat HKI</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{$mahasiswa->sertifikat_hki}}</td>
                                         <td class="px py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="{{ asset('storage/'.$mahasiswa->sertifikat_hki) }}" target="_blank" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
+                                            <a href="{{ Storage::disk('google')->url($mahasiswa->sertifikat_hki) }}" target="_blank" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none">
                                                 Download
                                             </a>
                                         </td>
