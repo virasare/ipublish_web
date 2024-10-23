@@ -18,5 +18,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/storage/*
+!/storage/app/public
+!/storage/logs
+
 
 .vercel
