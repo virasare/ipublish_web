@@ -23,6 +23,10 @@ yarn-error.log
 !/storage/logs
 /storage
 .DS_Store
+storage
+node_modules
+/node_modules
+vendor
 
 
 .vercel
