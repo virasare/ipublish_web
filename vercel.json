@@ -3,6 +3,11 @@
   "functions": {
     "api/index.php": { "runtime": "vercel-php@0.6.1" }
   },
+"functions": {
+    "api/*.js": {
+      "runtime": "edge"
+    }
+  },
   "config": {
     "composer": {
       "args": ["--no-dev"]
