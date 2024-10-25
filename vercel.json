@@ -8,11 +8,6 @@
       "runtime": "edge"
     }
   },
-  "config": {
-    "composer": {
-      "args": ["--no-dev"]
-    }
-  },
   "routes": [
     { "src": "/build/(.*)", "dest": "/public/build/" },
     { "src": "/(.*)", "dest": "/api/index.php" }
